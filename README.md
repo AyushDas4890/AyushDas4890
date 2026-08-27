@@ -113,20 +113,6 @@ Production carbon-accounting platform: XGBoost predictions wrapped in **conforma
 
 </div>
 
-<br>
-
-## Signals
-
-<div align="center">
-
-<img src="https://github-readme-stats-nine-green-43.vercel.app/api?username=ayushdas4890&show_icons=true&count_private=true&hide_border=true&rank_icon=github&bg_color=07070F&title_color=60A5FA&icon_color=F59E0B&text_color=8B8BA7&border_radius=12" height="170">
-&nbsp;
-<img src="https://github-readme-stats-nine-green-43.vercel.app/api/top-langs/?username=ayushdas4890&layout=compact&hide_border=true&bg_color=07070F&title_color=60A5FA&text_color=8B8BA7&border_radius=12" height="170">
-
-</div>
-
-<br>
-
 ---
 
 <div align="center">

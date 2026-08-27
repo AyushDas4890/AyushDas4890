@@ -36,7 +36,7 @@ No web fonts are possible in an SVG rendered as an image, so faces resolve from 
 
 ## Structure
 
-Hero → one positioning paragraph → **the problem I keep solving** (a thesis, before any project) → architecture diagram + the argument for the critic node → four projects with real technical decisions surfaced → stack → stats → contact.
+Hero → one positioning paragraph → **the problem I keep solving** (a thesis, before any project) → architecture diagram + the argument for the critic node → four projects with real technical decisions surfaced → stack → contact.
 
 Depth leads. The sequencing is the "mastery" claim: an engineer's profile that opens with an argument and a diagram reads differently from one that opens with a badge wall.
 
@@ -50,4 +50,12 @@ Emoji are retained as project-section markers. The craft floor treats emoji-as-i
 
 ## Constraints
 
-GitHub Markdown allows no CSS, JS, or web fonts. Every visual decision works within: committed SVG assets, allowed inline HTML (`<div align>`, `<img>`, `<br>`), tables, and query-parameterized external widgets. No project fact, metric, link, or credential was invented — all four project entries derive from the existing profile content.
+GitHub Markdown allows no CSS, JS, or web fonts. Every visual decision works within: committed SVG assets, allowed inline HTML (`<div align>`, `<img>`, `<br>`), tables, and shields.io badges. No project fact, metric, link, or credential was invented — all four project entries derive from the existing profile content.
+
+## Removed: the stats cards
+
+A "Signals" section originally carried two `github-readme-stats` cards from a self-hosted instance. It was cut after the instance began rendering *"Something went wrong! Downtime due to GitHub API rate limiting"* on the live profile.
+
+The removal is a design improvement, not just a bug workaround. Those cards were the only third-party generators left in an otherwise fully authored page, and commit/streak/language counts are vanity metrics that say nothing about ML depth — the architecture diagram and the project write-ups carry that argument far better. A visibly broken error card on a profile arguing for engineering rigor is worse than no card at all.
+
+To restore them, the self-hosted instance needs a GitHub personal access token set as `PAT_1` in its Vercel environment variables; unauthenticated it falls back to a shared rate limit and throttles quickly.
