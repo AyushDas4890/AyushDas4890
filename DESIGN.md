@@ -24,11 +24,35 @@ Amber is rationed deliberately: it marks the self-critique loop and nothing else
 
 ## Assets
 
-**`assets/hero.svg`** (1280×400) — animated agent-graph banner. Node clusters flank a center wordmark; edges flow via `stroke-dashoffset` animation, nodes breathe on staggered delays, embers drift. Center glow keeps the wordmark legible over the graph. Composition deliberately leaves the middle band quiet so type never competes with the network.
+Every visual is a hand-authored SVG in `assets/`, all 1280 wide so they share one grid and scale together.
 
-**`assets/architecture.svg`** (1280×400) — the real agent topology: `PLANNER → SEARCH → READ → CRITIC → WRITE` over a dual-layer ChromaDB memory bar, with the critic's amber feedback arc routing back to search. Content is drawn from the actual AI Research Assistant Pipeline description; nothing about the architecture is invented. This is the profile's proof-of-mastery asset — it demonstrates systems thinking before any project list does.
+| File | Size | What moves, and what it explains |
+|:--|:--|:--|
+| `hero.svg` | 1280×400 | Network boots outward from the center (mask wipe), nodes pop in by distance, wordmark tracks in from wide letter-spacing, HUD brackets draw on, a light sweep crosses the name, and a SMIL typewriter cycles four positioning lines |
+| `section-0{1..4}.svg` | 1280×120 | Kinetic title cards: outlined index numeral draws on, title slides in, rule wipes across, an amber signal pulse travels the rule |
+| `layers.svg` | 1280×300 | The three-layer thesis as motion: a packet circulating a five-node cycle with an amber retry chord; a query sonar-pinging a vector space and snapping to its 3 nearest neighbours; a prediction drawing with its conformal band and a check |
+| `architecture.svg` | 1280×400 | The real topology, now *running*: a packet goes plan → search → read → critic, is rejected (`verdict: retry`), rides the amber arc back to search, passes on the second pass and streams out of write. Node boxes and their memory read/write lines light up in sync |
+| `project-research.svg` | 1280×240 | Blocking vs. streamed lanes on a shared clock: one waits for a progress bar then dumps everything, the other emits tokens immediately. `87%` rolls in on an odometer |
+| `project-legal.svg` | 1280×240 | Two documents, clause-alignment links draw across, one turns amber and flags `CONTRADICTION` with pulsing attention spans; the ALIGN → ENTAIL → ATTRIBUTE steps light in sequence |
+| `project-atlas.svg` | 1280×240 | 19 points (one per lineage-specific TF) orbit tilted ellipses with depth faked by opacity; HNF1B, GATA3, NKX2-1 ride as labelled amber points. Expression matrix twinkles; `98.76%` and `19` roll in |
+| `project-carbon.svg` | 1280×240 | Predictions pop in with their interval whiskers, SHAP bars grow from a shared baseline in both directions; `ŷ ± q̂` |
+| `divider.svg` | 1280×36 | Between projects: a spinning amber diamond emitting particles outward |
+| `stack.svg` | 1280×300 | Four marquee lanes (one per layer) at different speeds and alternating directions, edge-faded; the anchor tool of each layer is ringed amber |
+| `footer.svg` | 1280×260 | Sign-off typed with `steps()` and a following caret over four slow waveforms |
 
-Both use CSS animation inside the SVG (works when GitHub serves them as images) and both **read completely without animation** — motion is a layer, never load-bearing. Both honor `prefers-reduced-motion`.
+Every number on a card (87%, 98.76%, 19) is one already stated in the project text. The SHAP features are labelled `φ₁…φ₅` and the clause/token/matrix shapes are abstract on purpose: they illustrate a mechanism and claim no data.
+
+## Motion
+
+**Two tiers.** *Entrances* are one-shot (boot, track-in, draw-on, wipe, pop, odometer) and run when the image first becomes visible: browsers pause animations in off-screen SVG images, so each card performs as it is scrolled into view. *Ambient loops* are slow and low-contrast (edge flow, breathing, orbits, marquee, waves) so the page never feels busy at rest.
+
+**Settled frame is the design.** Every entrance uses `animation-fill-mode: backwards` and keyframes that only define the `from` state, so the element's own attributes are the end state. With motion off, or mid-load, nothing is ever stuck invisible.
+
+**Motion carries meaning.** Amber movement always means the critique/correction idea (retry arc, contradiction, interval, signal pulse); blue is structure and flow. Nothing moves that could not be explained in a sentence.
+
+**Mechanics.** CSS keyframes for transforms/opacity; SMIL (`animate`, `animateMotion` with `keyPoints`) where timing must be exact or an element follows a path: the typewriter, the topology packet and its synced highlights, orbiting TFs. Mono text uses `textLength` so typewriter clips and carets line up whatever monospace font the viewer has. Easing is one family: `cubic-bezier(.16,1,.3,1)` for settles, a slight overshoot for pops.
+
+**Reduced motion.** Every SVG has a `prefers-reduced-motion` block that stops CSS animation, hides SMIL-driven layers (`.smil`) and shows static stand-ins (`.rm-show`), e.g. the hero's typewriter becomes the full positioning line.
 
 ## Type
 
@@ -36,17 +60,17 @@ No web fonts are possible in an SVG rendered as an image, so faces resolve from 
 
 ## Structure
 
-Hero → one positioning paragraph → **the problem I keep solving** (a thesis, before any project) → architecture diagram + the argument for the critic node → four projects with real technical decisions surfaced → stack → contact.
+Hero → one positioning paragraph → **01 the problem** (thesis + layers triptych) → **02 topology** (the running architecture + the argument for the critic node) → **03 selected work** (four animated project cards, each followed by its write-up) → **04 stack** (marquee + plain-text summary) → typed sign-off → contact.
 
 Depth leads. The sequencing is the "mastery" claim: an engineer's profile that opens with an argument and a diagram reads differently from one that opens with a badge wall.
 
 ## Verification
 
-Both SVGs and the full rendered README were screenshotted in headless Chromium and inspected. Two defects were found and fixed: the architecture diagram's title block collided with the feedback arc (moved below the memory bar), and the Stack section's four lines collapsed into one paragraph (markdown single-newline; fixed with explicit `<br>`).
+Every SVG is validated with `xmllint` and frame-sampled in headless Chromium loaded as an `<img>` (GitHub's context: no scripts), then the full README is rendered on light and dark page backgrounds at desktop and phone widths. Motion-pass defects found and fixed: a duplicated `style` attribute (invalid XML) on wipe elements, the divider diamond's rotate attribute being overridden by its CSS spin, atlas orbits overflowing the card, and streamed tokens all reappearing at once on loop restart (moved to per-token SMIL key times). Earlier pass: the architecture diagram's title block collided with the feedback arc (moved below the memory bar), and the Stack section's four lines collapsed into one paragraph (markdown single-newline; fixed with explicit `<br>`).
 
 ## Deliberate deviations
 
-Emoji are retained as project-section markers. The craft floor treats emoji-as-icons as a tell, but the brief explicitly asked for a decorated profile, and in GitHub READMEs these read as a native affordance rather than a substitute icon system. The decorative weight is carried by the authored SVGs, not the emoji.
+The project emoji were removed in the motion pass: each project now opens with its own animated card (coded `P.01`–`P.04`), which does the marker job with real content. Section `##` headings became SVG title cards, which costs GitHub's heading outline; the alt text on each card carries the heading for screen readers.
 
 ## Constraints
 
