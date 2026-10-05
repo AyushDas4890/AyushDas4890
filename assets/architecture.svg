@@ -22,6 +22,13 @@
     <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
       <path d="M32 0 L0 0 0 32" fill="none" stroke="#60A5FA" stroke-width="0.5" opacity="0.07"/>
     </pattern>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="blur" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="3.2"/>
+    </filter>
     <style><![CDATA[
       .flowline { stroke-dasharray: 6 8; animation: dash 2.4s linear infinite; }
       @keyframes dash { to { stroke-dashoffset: -28 } }
@@ -33,6 +40,7 @@
       @keyframes pl { 0%,100% { opacity:.5 } 50% { opacity:1 } }
       .p1{animation-delay:-.6s}.p2{animation-delay:-1.2s}.p3{animation-delay:-1.8s}.p4{animation-delay:-2.4s}
       @media (prefers-reduced-motion: reduce) {
+        .smil { display: none }
         .flowline,.memline,.pulse { animation: none } .pulse { opacity:.85 }
       }
     ]]></style>
@@ -62,6 +70,19 @@
   </g>
 
   <!-- agent nodes -->
+  <!-- packet: drawn beneath the boxes, so it is only seen on the wires -->
+  <g class="smil">
+    <g>
+      <animateMotion dur="11.79s" repeatCount="indefinite" begin="0.4s" path="M152 140 L885 140 L885 96 C885 30 395 30 395 96 L395 140 L1130 140" keyPoints="0.0000;0.0000;0.1172;0.1172;0.2363;0.2363;0.3535;0.3535;0.6455;0.6455;0.7646;0.7646;0.8818;0.8818;1.0000;1.0000;1.0000" keyTimes="0.0000;0.0763;0.1160;0.1753;0.2156;0.2750;0.3146;0.4079;0.5067;0.5576;0.5979;0.6487;0.6884;0.7732;0.8132;0.9489;0.9998" calcMode="linear"/>
+      <circle r="11" fill="#60A5FA" opacity=".35" filter="url(#blur)">
+        <animate attributeName="fill" dur="11.79s" repeatCount="indefinite" begin="0.4s" calcMode="discrete" keyTimes="0.0000;0.3570;0.5067;1.0000" values="#60A5FA;#F59E0B;#60A5FA;#60A5FA"/>
+      </circle>
+      <circle r="4.2" fill="#93C5FD">
+        <animate attributeName="fill" dur="11.79s" repeatCount="indefinite" begin="0.4s" calcMode="discrete" keyTimes="0.0000;0.3570;0.5067;1.0000" values="#93C5FD;#FBBF24;#93C5FD;#93C5FD"/>
+      </circle>
+      <animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0;0.03;0.9491;0.9915;1" values="0;1;1;0;0"/>
+    </g>
+  </g>
   <g>
     <g>
       <rect x="60" y="100" width="185" height="80" rx="10" fill="url(#boxFill)" stroke="#60A5FA" stroke-width="1.2" opacity="0.95"/>
@@ -118,4 +139,32 @@
   <circle class="pulse"    cx="1180" cy="288" r="3.2" fill="#FBBF24"/>
   <circle class="pulse p2" cx="1194" cy="288" r="3.2" fill="#93C5FD"/>
   <circle class="pulse p4" cx="1208" cy="288" r="3.2" fill="#93C5FD"/>
+  <!-- node + memory highlights synced to the packet -->
+  <g class="smil" fill="none">
+    <rect x="60" y="100" width="185" height="80" rx="10" stroke="#93C5FD" stroke-width="2" filter="url(#glow)" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.0001;0.0000;0.0763;0.0967;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <line x1="152" y1="182" x2="152" y2="262" stroke="#93C5FD" stroke-width="2" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.0001;0.0000;0.0763;0.0967;1.0000" values="0;0;1.0;1.0;0;0"/></line>
+    <rect x="305" y="100" width="185" height="80" rx="10" stroke="#93C5FD" stroke-width="2" filter="url(#glow)" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.1058;0.1160;0.1753;0.1957;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <line x1="397" y1="182" x2="397" y2="262" stroke="#93C5FD" stroke-width="2" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.1058;0.1160;0.1753;0.1957;1.0000" values="0;0;1.0;1.0;0;0"/></line>
+    <rect x="550" y="100" width="185" height="80" rx="10" stroke="#93C5FD" stroke-width="2" filter="url(#glow)" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.2055;0.2156;0.2750;0.2954;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <line x1="642" y1="182" x2="642" y2="262" stroke="#93C5FD" stroke-width="2" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.2055;0.2156;0.2750;0.2954;1.0000" values="0;0;1.0;1.0;0;0"/></line>
+    <rect x="795" y="100" width="185" height="80" rx="10" stroke="#FBBF24" stroke-width="2" filter="url(#glow)" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.3045;0.3146;0.4079;0.4283;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <line x1="887" y1="182" x2="887" y2="262" stroke="#FBBF24" stroke-width="2" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.3045;0.3146;0.4079;0.4283;1.0000" values="0;0;1.0;1.0;0;0"/></line>
+    <rect x="305" y="100" width="185" height="80" rx="10" stroke="#93C5FD" stroke-width="2" filter="url(#glow)" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.4965;0.5067;0.5576;0.5779;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <line x1="397" y1="182" x2="397" y2="262" stroke="#93C5FD" stroke-width="2" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.4965;0.5067;0.5576;0.5779;1.0000" values="0;0;1.0;1.0;0;0"/></line>
+    <rect x="550" y="100" width="185" height="80" rx="10" stroke="#93C5FD" stroke-width="2" filter="url(#glow)" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.5877;0.5979;0.6487;0.6691;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <line x1="642" y1="182" x2="642" y2="262" stroke="#93C5FD" stroke-width="2" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.5877;0.5979;0.6487;0.6691;1.0000" values="0;0;1.0;1.0;0;0"/></line>
+    <rect x="795" y="100" width="185" height="80" rx="10" stroke="#FBBF24" stroke-width="2" filter="url(#glow)" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.6782;0.6884;0.7732;0.7936;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <line x1="887" y1="182" x2="887" y2="262" stroke="#FBBF24" stroke-width="2" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.6782;0.6884;0.7732;0.7936;1.0000" values="0;0;1.0;1.0;0;0"/></line>
+    <rect x="1040" y="100" width="180" height="80" rx="10" stroke="#93C5FD" stroke-width="2" filter="url(#glow)" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.8030;0.8132;0.9489;0.9692;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <line x1="1130" y1="182" x2="1130" y2="262" stroke="#93C5FD" stroke-width="2" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.8030;0.8132;0.9489;0.9692;1.0000" values="0;0;1.0;1.0;0;0"/></line>
+    <g opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.3257;0.3358;0.5012;0.5216;1.0000" values="0;0;1.0;1.0;0;0"/><text x="899" y="228" fill="#F59E0B" font-size="11.5" text-anchor="start" font-family="'SFMono-Regular',Menlo,'DejaVu Sans Mono','Liberation Mono',Consolas,monospace" textLength="207.0" lengthAdjust="spacingAndGlyphs" >verdict: retry — thin evidence</text></g>
+    <g opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.6994;0.7096;0.7732;0.7936;1.0000" values="0;0;1.0;1.0;0;0"/><text x="899" y="228" fill="#93C5FD" font-size="11.5" text-anchor="start" font-family="'SFMono-Regular',Menlo,'DejaVu Sans Mono','Liberation Mono',Consolas,monospace" textLength="144.9" lengthAdjust="spacingAndGlyphs" >verdict: pass → write</text></g>
+    <rect x="1142" y="214" width="8" height="3" rx="1.5" fill="#93C5FD" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.8157;0.8259;0.9658;0.9862;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <rect x="1154" y="214" width="8" height="3" rx="1.5" fill="#93C5FD" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.8310;0.8411;0.9658;0.9862;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <rect x="1166" y="214" width="8" height="3" rx="1.5" fill="#93C5FD" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.8462;0.8564;0.9658;0.9862;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <rect x="1178" y="214" width="8" height="3" rx="1.5" fill="#93C5FD" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.8615;0.8717;0.9658;0.9862;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <rect x="1190" y="214" width="8" height="3" rx="1.5" fill="#93C5FD" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.8768;0.8869;0.9658;0.9862;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <rect x="1202" y="214" width="8" height="3" rx="1.5" fill="#93C5FD" opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.8920;0.9022;0.9658;0.9862;1.0000" values="0;0;1.0;1.0;0;0"/></rect>
+    <g opacity="0"><animate attributeName="opacity" dur="11.79s" repeatCount="indefinite" begin="0.4s" keyTimes="0.0000;0.8157;0.8259;0.9658;0.9862;1.0000" values="0;0;1.0;1.0;0;0"/><text x="1142" y="236" fill="#8B8BA7" font-size="11" text-anchor="start" font-family="'SFMono-Regular',Menlo,'DejaVu Sans Mono','Liberation Mono',Consolas,monospace" textLength="66.0" lengthAdjust="spacingAndGlyphs" >SSE stream</text></g>
+  </g>
 </svg>

@@ -1,10 +1,9 @@
 <!--
-THESIS: The profile renders as the thing Ayush actually builds — a multi-agent system. Bespoke SVG art and a real architecture diagram replace the assembled-from-generators dashboard every ML profile ships.
-OWN-WORLD: obsidian #07070F ground, electric blue #60A5FA, gold/amber #F59E0B signal accent; hand-authored animated SVG (node graph, flowing edges, breathing nodes); mono for system text, heavy tracked sans for the wordmark.
-STORY: visitor sees a living agent graph, reads one positioning line, then meets a real topology diagram that proves the claim before any project list — depth first, links second.
-FIRST VIEWPORT: full-bleed animated agent-graph banner, name at center, one-line thesis beneath, single quiet link row.
-FORM: systems-diagram grammar — the visual language of the domain itself, not the dev-template dashboard.
-FINISH: static README; SVGs verified by headless-Chromium render; documented in DESIGN.md.
+THESIS: The profile renders as the thing Ayush actually builds — a multi-agent system — and now it *runs*. Every visual is a hand-authored animated SVG whose motion explains a real technical idea, not decoration.
+OWN-WORLD: obsidian #07070F ground, electric blue #60A5FA, gold/amber #F59E0B signal accent; mono for system text, heavy tracked sans for the wordmark.
+MOTION: one-shot entrances (boot, track-in, draw-on, odometer roll) + quiet ambient loops (flowing edges, breathing nodes, marquee, waveform). Every entrance settles on a fully legible frame; every SVG honors prefers-reduced-motion.
+STORY: living agent graph → three-layer thesis → a packet actually running the critic loop → four project cards that each animate their key idea → stack marquee → typed sign-off.
+FINISH: static README; every SVG validated with xmllint and frame-checked in headless Chromium; motion system documented in DESIGN.md.
 -->
 
 <div align="center">
@@ -25,9 +24,11 @@ I build **autonomous agent systems** — the kind that plan, retrieve, critique 
 
 <br>
 
-## The problem I keep solving
+<img src="assets/section-01.svg" alt="01 — The problem I keep solving: a single LLM call is a guess" width="100%">
 
 A single LLM call is a guess. It cannot tell you how confident it is, cannot go find what it's missing, and cannot notice it answered the wrong question. Every system here is an answer to that: **give the model a loop, an external memory, and something that grades it.**
+
+<img src="assets/layers.svg" alt="Three layers — orchestration as a cyclic graph, retrieval as nearest-neighbour search over vector memory, verification as a prediction with a calibrated interval" width="100%">
 
 | Layer | How I build it |
 |:--|:--|
@@ -37,19 +38,21 @@ A single LLM call is a guess. It cannot tell you how confident it is, cannot go 
 
 <br>
 
-## How the systems are wired
+<img src="assets/section-02.svg" alt="02 — Topology: how the systems are wired" width="100%">
 
 <div align="center">
-<img src="assets/architecture.svg" alt="Agent topology: planner, search, read, critic, write over a dual-layer vector memory, with a self-critique loop back to search" width="100%">
+<img src="assets/architecture.svg" alt="Agent topology: a packet runs planner → search → read → critic, is sent back along the amber self-critique loop for more evidence, then passes critic and is streamed out by write — all over a dual-layer ChromaDB memory" width="100%">
 </div>
 
-The critic is the part that matters. A linear `plan → search → write` chain produces confident nonsense when retrieval comes back thin. Making critique a **routing node** instead of a post-processing step means the graph can send itself back for more evidence before it ever writes — the difference between a demo and something you'd let near real work.
+Watch the packet. The critic is the part that matters. A linear `plan → search → write` chain produces confident nonsense when retrieval comes back thin. Making critique a **routing node** instead of a post-processing step means the graph can send itself back for more evidence before it ever writes — the difference between a demo and something you'd let near real work.
 
 <br>
 
-## Selected work
+<img src="assets/section-03.svg" alt="03 — Selected work: four systems, four live demos" width="100%">
 
-### 🔬 [AI Research Assistant Pipeline](https://github.com/AyushDas4890/AI-Research-Assistant-Pipeline)
+<a href="https://github.com/AyushDas4890/AI-Research-Assistant-Pipeline"><img src="assets/project-research.svg" alt="AI Research Assistant Pipeline — blocking vs streamed output, 87% lower perceived latency" width="100%"></a>
+
+### [AI Research Assistant Pipeline](https://github.com/AyushDas4890/AI-Research-Assistant-Pipeline)
 
 Five-agent LangGraph system that plans, searches, reads, self-critiques, and writes structured research reports. Dual-layer memory via ChromaDB; results stream to the client over SSE rather than blocking on the full generation, reducing perceived latency by 87%.
 
@@ -57,9 +60,11 @@ Five-agent LangGraph system that plans, searches, reads, self-critiques, and wri
 
 [**→ Open the live demo**](https://ayushdas4890-ai-research-assistant-pipeline-app-1sjuvf.streamlit.app/)
 
----
+<img src="assets/divider.svg" alt="" width="100%">
 
-### ⚖️ [Legal-Financial Conflict Resolver](https://github.com/AyushDas4890/Legal-Conflict-Resolver)
+<a href="https://github.com/AyushDas4890/Legal-Conflict-Resolver"><img src="assets/project-legal.svg" alt="Legal-Financial Conflict Resolver — clauses aligned across two documents, one contradiction flagged with attention spans" width="100%"></a>
+
+### [Legal-Financial Conflict Resolver](https://github.com/AyushDas4890/Legal-Conflict-Resolver)
 
 Five-phase NLP pipeline that detects contradictions between legal documents. DeBERTa-v3-large for entailment, FAISS for clause alignment, and cross-attention heatmaps so a reviewer can see *which spans* drove the call — explainability being non-optional in a legal context.
 
@@ -67,9 +72,11 @@ Five-phase NLP pipeline that detects contradictions between legal documents. DeB
 
 [**→ Open the live demo**](https://website-orpin-chi-25.vercel.app)
 
----
+<img src="assets/divider.svg" alt="" width="100%">
 
-### 🧬 [Cancer TF Discovery Atlas](https://github.com/AyushDas4890/cancer-tf-dashboard)
+<a href="https://github.com/AyushDas4890/cancer-tf-dashboard"><img src="assets/project-atlas.svg" alt="Cancer TF Discovery Atlas — 19 lineage-specific transcription factors orbiting, HNF1B, GATA3 and NKX2-1 highlighted, 98.76% classifier accuracy" width="100%"></a>
+
+### [Cancer TF Discovery Atlas](https://github.com/AyushDas4890/cancer-tf-dashboard)
 
 Pan-cancer transcription-factor analysis over TCGA RNA-Seq data, surfaced as an interactive 3D dashboard. Identifies 19 lineage-specific transcription factors at **98.76%** classifier accuracy — and independently rediscovers known master regulators (HNF1B, GATA3, NKX2-1), which is the result that says the pipeline is finding biology rather than fitting noise.
 
@@ -77,9 +84,11 @@ Pan-cancer transcription-factor analysis over TCGA RNA-Seq data, surfaced as an 
 
 [**→ Open the live demo**](https://cancer-tf-dashboard.vercel.app)
 
----
+<img src="assets/divider.svg" alt="" width="100%">
 
-### 🌍 [Carbon Footprint Generator — C4Future](https://github.com/AyushDas4890/Carbon_Footprint_Generator)
+<a href="https://github.com/AyushDas4890/Carbon_Footprint_Generator"><img src="assets/project-carbon.svg" alt="Carbon Footprint Generator — predictions drawn with conformal intervals beside SHAP attribution bars" width="100%"></a>
+
+### [Carbon Footprint Generator — C4Future](https://github.com/AyushDas4890/Carbon_Footprint_Generator)
 
 Production carbon-accounting platform: XGBoost predictions wrapped in **conformal intervals** (so the output carries a calibrated uncertainty range, not a bare point estimate), a RAG sustainability advisor over real LCA data, an agentic bill-of-materials decomposer, and SHAP attributions on every prediction.
 
@@ -89,22 +98,11 @@ Production carbon-accounting platform: XGBoost predictions wrapped in **conforma
 
 <br>
 
-## Stack
+<img src="assets/section-04.svg" alt="04 — Stack: tools, sorted by the layer they serve" width="100%">
+
+<img src="assets/stack.svg" alt="Stack by layer, scrolling: orchestration, retrieval, modeling, serving" width="100%">
 
 <div align="center">
-
-![Python](https://img.shields.io/badge/Python-07070F?style=flat-square&logo=python&logoColor=60A5FA)
-![PyTorch](https://img.shields.io/badge/PyTorch-07070F?style=flat-square&logo=pytorch&logoColor=F59E0B)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-07070F?style=flat-square&logo=tensorflow&logoColor=F59E0B)
-![HuggingFace](https://img.shields.io/badge/Transformers-07070F?style=flat-square&logo=huggingface&logoColor=F59E0B)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-07070F?style=flat-square&logo=scikitlearn&logoColor=60A5FA)
-![LangChain](https://img.shields.io/badge/LangChain-07070F?style=flat-square&logo=langchain&logoColor=60A5FA)
-![OpenAI](https://img.shields.io/badge/OpenAI-07070F?style=flat-square&logo=openai&logoColor=60A5FA)
-![FastAPI](https://img.shields.io/badge/FastAPI-07070F?style=flat-square&logo=fastapi&logoColor=60A5FA)
-![Django](https://img.shields.io/badge/Django-07070F?style=flat-square&logo=django&logoColor=60A5FA)
-![React](https://img.shields.io/badge/React-07070F?style=flat-square&logo=react&logoColor=60A5FA)
-![Docker](https://img.shields.io/badge/Docker-07070F?style=flat-square&logo=docker&logoColor=60A5FA)
-![Three.js](https://img.shields.io/badge/Three.js-07070F?style=flat-square&logo=threedotjs&logoColor=F5F5F7)
 
 **Orchestration** — LangGraph · LangChain · agent routing, tool use, streaming<br>
 **Retrieval** — ChromaDB · FAISS · embedding pipelines, hybrid ranking<br>
@@ -113,11 +111,11 @@ Production carbon-accounting platform: XGBoost predictions wrapped in **conforma
 
 </div>
 
----
+<br>
+
+<img src="assets/footer.svg" alt="Currently building agentic systems — open to collaborating on hard ones" width="100%">
 
 <div align="center">
-
-### Currently building agentic systems — and open to collaborating on hard ones.
 
 [**ayushdas4890@gmail.com**](mailto:ayushdas4890@gmail.com) &nbsp;·&nbsp; [**LinkedIn**](https://linkedin.com/in/ayushdas4890) &nbsp;·&nbsp; [**Portfolio**](https://portfolio-website-zeta-topaz-84.vercel.app/)
 

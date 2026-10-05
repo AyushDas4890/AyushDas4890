@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 120" width="1280" height="120" role="img" aria-label="03 — Selected Work: four systems · four live demos">
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0 L0 0 0 32" fill="none" stroke="#60A5FA" stroke-width="0.5" opacity="0.07"/>
+    </pattern>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#60A5FA" stop-opacity=".55"/>
+      <stop offset="100%" stop-color="#60A5FA" stop-opacity=".05"/>
+    </linearGradient>
+    <linearGradient id="pulse" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0"/>
+      <stop offset="80%" stop-color="#FBBF24" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="1"/>
+    </linearGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="blur" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="3.2"/>
+    </filter>
+    <style><![CDATA[
+      .in-fade { animation: inFade .9s cubic-bezier(.16,1,.3,1) backwards; }
+      @keyframes inFade { from { opacity: 0 } }
+      .in-up { animation: inUp .9s cubic-bezier(.16,1,.3,1) backwards; }
+      @keyframes inUp { from { opacity: 0; transform: translateY(14px) } }
+      .in-left { animation: inLeft 1s cubic-bezier(.16,1,.3,1) backwards; }
+      @keyframes inLeft { from { opacity: 0; transform: translateX(-26px) } }
+      .in-pop { animation: inPop .7s cubic-bezier(.34,1.56,.64,1) backwards; transform-box: fill-box; transform-origin: center; }
+      @keyframes inPop { from { opacity: 0; transform: scale(0) } }
+      .in-wipe { animation: inWipe 1.2s cubic-bezier(.16,1,.3,1) backwards; transform-box: fill-box; transform-origin: 0 50%; }
+      @keyframes inWipe { from { transform: scaleX(0) } }
+      .in-wipe-c { animation: inWipe 1.2s cubic-bezier(.16,1,.3,1) backwards; transform-box: fill-box; transform-origin: center; }
+      .in-draw { stroke-dasharray: 1; animation: inDraw 1.4s cubic-bezier(.16,1,.3,1) backwards; }
+      @keyframes inDraw { from { stroke-dashoffset: 1 } }
+      .blink { animation: blink 1.1s steps(1) infinite; }
+      @keyframes blink { 50% { opacity: 0 } }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before { animation: none !important; }
+        .smil { display: none; }
+        .rm-show { display: inline !important; }
+      }
+      .num { stroke-dasharray: 260; animation: numDraw 1.6s cubic-bezier(.16,1,.3,1) .1s backwards, numFill .8s ease 1.2s backwards; }
+      @keyframes numDraw { from { stroke-dashoffset: 260 } }
+      @keyframes numFill { from { fill-opacity: 0 } }
+      .travel { animation: travel 4.8s cubic-bezier(.45,0,.55,1) 1.4s infinite backwards; }
+      @keyframes travel { 0% { transform: translateX(0); opacity: 0 } 8% { opacity: 1 } 60% { opacity: 1 } 70%,100% { transform: translateX(1000px); opacity: 0 } }
+    ]]></style>
+  </defs>
+  <rect width="1280" height="120" rx="16" fill="#07070F"/>
+  <rect class="in-fade" width="1280" height="120" rx="16" fill="url(#grid)"/>
+  <text class="num" x="44" y="88" font-family="'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="72" font-weight="800" fill="#60A5FA" fill-opacity=".14" stroke="#60A5FA" stroke-width="1.3">03</text>
+  <rect class="in-wipe" x="160" y="30" width="1.6" height="62" fill="#F59E0B" style="animation-delay:.35s;transform-origin:50% 0"/>
+  <text class="in-left" style="animation-delay:0.45s" x="186" y="64" fill="#F5F5F7" font-family="'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="30" font-weight="700" letter-spacing="5">SELECTED WORK</text>
+  <g class="in-left" style="animation-delay:0.65s"><text x="188" y="90" fill="#8B8BA7" font-size="13" text-anchor="start" font-family="'SFMono-Regular',Menlo,'DejaVu Sans Mono','Liberation Mono',Consolas,monospace" textLength="234.0" lengthAdjust="spacingAndGlyphs" >four systems · four live demos</text></g>
+  <g class="in-fade" style="animation-delay:0.9s"><circle class="blink" cx="1159.2" cy="36" r="2.8" fill="#F59E0B"/><text x="1236" y="40" fill="#6E6E8E" font-size="12" text-anchor="end" font-family="'SFMono-Regular',Menlo,'DejaVu Sans Mono','Liberation Mono',Consolas,monospace" textLength="64.8" lengthAdjust="spacingAndGlyphs" >§ 03 / 04</text></g>
+  <rect class="in-wipe" style="animation-delay:0.8s" x="186" y="104" width="1050" height="1" fill="url(#rule)"/>
+  <rect class="travel" x="120" y="103" width="120" height="3" rx="1.5" fill="url(#pulse)" filter="url(#glow)"/>
+</svg>
